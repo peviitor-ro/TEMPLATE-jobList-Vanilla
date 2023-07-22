@@ -1,0 +1,78 @@
+/*********
+ * RESET *
+ *********/
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+:root {
+  /**********
+    * COLORS *
+    **********/
+
+  --white: hsla(0, 0%, 100%, 1);
+  --black: hsla(0, 0%, 0%, 1);
+  --gray: hsla(0, 0%, 51%, 1);
+  --primary: hsla(0, 0%, 4%, 1);
+  --primary-light: hsla(0, 0%, 8%, 1);
+  --secondary: hsla(0, 0%, 28%, 1);
+  --accent: hsla(34, 75%, 50%, 1);
+
+  /**************
+ * TYPOGRAPHY *
+ **************/
+
+  --roboto: "Roboto";
+  --inter: "Inter";
+}
+
+/*******************
+ * UTILITY CLASSES *
+ *******************/
+
+.flex {
+  display: flex;
+}
+
+.container {
+  width: 95%;
+  margin-inline: auto;
+}
+
+/**********
+ * LAYOUT *
+ **********/
+
+.menu-desktop {
+  display: none;
+}
+
+header {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo p {
+  color: var(--black);
+  font-family: var(--roboto);
+  font-weight: 700;
+  
+}
