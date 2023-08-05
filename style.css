@@ -210,8 +210,11 @@ hr {
   cursor: pointer;
 }
 
-.search-bar,
-.drop-bar p {
+input {
+  width: 90%;
+  border: 0;
+  outline: 0;
+  background: transparent;
   color: var(--gray, #828282);
   font-family: var(--roboto);
   font-size: 1.125rem;
@@ -378,6 +381,7 @@ hr {
   main {
     border-radius: 1rem;
     border: 1px solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
     padding: 2.88rem;
   }
 

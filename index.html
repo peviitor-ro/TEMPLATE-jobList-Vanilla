@@ -11,6 +11,29 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <script src="app.js" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "JobPosting",
+        "title": "Software Engineer",
+        "description": "Job description goes here...",
+        "datePosted": "2022-01-01",
+        "validThrough": "2022-12-31",
+        "employmentType": "Full-time",
+        "hiringOrganization": {
+          "@type": "Organization",
+          "name": "Your Company",
+          "sameAs": "https://www.yourcompany.com"
+        },
+        "jobLocation": {
+          "@type": "Place",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Oradea"
+          }
+        }
+      }
+    </script>
   </head>
   <body>
     <header class="container flex">
@@ -21,12 +44,17 @@
         <span class="sr-only" aria-expanded="false">Menu</span>
       </button>
       <nav class="nav-bar">
-        <ul id="primary-navigation" data-visible="false" class="nav-list primary-navigation">
+        <ul
+          id="primary-navigation"
+          data-visible="false"
+          class="nav-list primary-navigation">
           <li class="nav-item"><a class="nav-link" href="#">Acasa</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Despre</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Servicii</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Produse</a></li>
-          <li class="nav-item"><a class="nav-link is-active" href="#">Cariere</a></li>
+          <li class="nav-item">
+            <a class="nav-link is-active" href="#">Cariere</a>
+          </li>
           <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
         </ul>
       </nav>
@@ -36,33 +64,33 @@
       <section class="job-form flex container">
         <h2>Locuri de munca disponibile</h2>
         <hr />
-        <div class="form flex container">
+        <form class="form flex container">
           <div class="search-bar flex">
             <img
               src="assets/material-symbols_search-rounded.svg"
               alt="search icon" />
-            <p>Cauta job</p>
+            <input type="text" placeholder="Cauta job" />
           </div>
           <div class="drop-bar">
-            <p>Oras</p>
+            <input type="text" placeholder="Oras" />
             <img
               src="assets/material-symbols_arrow-back-ios-rounded.svg"
               alt="arrow down icon" />
           </div>
           <div class="drop-bar">
-            <p>Alege departament</p>
+            <input type="text" placeholder="Alege departament" />
             <img
               src="assets/material-symbols_arrow-back-ios-rounded.svg"
               alt="arrow down icon" />
           </div>
           <div class="drop-bar">
-            <p>Tip job</p>
+            <input type="text" placeholder="Tip job" />
             <img
               src="assets/material-symbols_arrow-back-ios-rounded.svg"
               alt="arrow down icon" />
           </div>
           <button class="btn" type="button">Cauta job</button>
-        </div>
+        </form>
         <section class="job-tags container">
           <div class="tags-group flex">
             <div class="tag">
@@ -103,11 +131,7 @@
           </div>
           <div class="buttons">
             <button class="btn-apply">
-              <a
-                href="https://gregarious-cactus-22cf59.netlify.app/"
-                target="_blank"
-                >Aplica</a
-              >
+              Aplica
             </button>
             <button class="btn-view">Vezi detalii</button>
           </div>
@@ -206,7 +230,7 @@
       </section>
     </main>
 
-    <div class="num-nav">
+    <section class="num-nav">
       <div class="flex numbers">
         <span class="num1">1</span>
         <span class="num2">2</span>
@@ -215,6 +239,6 @@
         <span class="dots">...</span>
         <span class="num10">10</span>
       </div>
-    </div>
+    </section>
   </body>
 </html>
