@@ -4,31 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Template Job List Vanilla</title>
-    <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter&family=Roboto&display=swap"
       rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
   </head>
   <body>
     <header class="container flex">
       <div class="logo">
         <p>Logo</p>
       </div>
-      <div class="menu-mobile">
-        <img src="assets/charm_menu-hamburger.svg" alt="hamburger menu" />
-      </div>
-      <nav class="nav-bar menu-desktop">
-        <ul class="nav-list">
+      <button class="mobile-nav-toggle" aria-controls="primary-navigation">
+        <span class="sr-only" aria-expanded="false">Menu</span>
+      </button>
+      <nav class="nav-bar">
+        <ul id="primary-navigation" data-visible="false" class="nav-list primary-navigation">
           <li class="nav-item"><a class="nav-link" href="#">Acasa</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Despre</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Servicii</a></li>
           <li class="nav-item"><a class="nav-link" href="#">Produse</a></li>
-          <li class="nav-item">
-            <a class="nav-link is-active" href="#">Cariere</a>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="#">Contact </a></li>
+          <li class="nav-item"><a class="nav-link is-active" href="#">Cariere</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
         </ul>
       </nav>
     </header>
