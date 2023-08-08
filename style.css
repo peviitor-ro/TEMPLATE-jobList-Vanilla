@@ -86,6 +86,10 @@ body {
   font-family: var(--roboto);
 }
 
+.nav-item {
+  text-align: center;
+}
+
 .is-active {
   color: var(--accent);
 }
@@ -108,7 +112,7 @@ body {
   .primary-navigation {
     position: fixed;
     z-index: 1000;
-    inset: 0 0 0 30%;
+    inset: 0 0 0 0%;
     list-style: none;
     padding: min(20rem, 15vh) 2rem;
     margin: 0;
