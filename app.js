@@ -13,5 +13,12 @@ navToggle.addEventListener("click", () => {
     nav.setAttribute("data-visible", false);
     navToggle.setAttribute("aria-expanded", false);
   }
+});const tags = document.querySelectorAll('.tag');
+
+tags.forEach(tag => {
+  tag.addEventListener('click', () => {
+    tag.remove();
+  });
 });
+
 

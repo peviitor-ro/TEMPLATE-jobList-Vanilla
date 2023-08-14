@@ -90,6 +90,10 @@ body {
   text-align: center;
 }
 
+.nav-item:is(:not(:last-child)) {
+  margin-bottom: 1.5rem;
+}
+
 .is-active {
   color: var(--accent);
 }
@@ -138,6 +142,7 @@ body {
     width: 1.5rem;
     aspect-ratio: 1;
     border: 0;
+    cursor: pointer;
   }
 
   .mobile-nav-toggle[aria-expanded="true"] {

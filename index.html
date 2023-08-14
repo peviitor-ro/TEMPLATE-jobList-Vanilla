@@ -11,28 +11,40 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <script src="app.js" defer></script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "JobPosting",
-        "title": "Software Engineer",
-        "description": "Job description goes here...",
-        "datePosted": "2022-01-01",
-        "validThrough": "2022-12-31",
-        "employmentType": "Full-time",
-        "hiringOrganization": {
-          "@type": "Organization",
-          "name": "Your Company",
-          "sameAs": "https://www.yourcompany.com"
-        },
-        "jobLocation": {
-          "@type": "Place",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Oradea"
+    <script type="text/javascript">
+      // Function to dynamically load the job posting data
+      function loadJobPosting() {
+        var jobPosting = {
+          "@context": "https://schema.org",
+          "@type": "JobPosting",
+          "title": "Software Engineer",
+          "description": "Job description goes here...",
+          "datePosted": "2022-01-01",
+          "validThrough": "2022-12-31",
+          "employmentType": "Norma intreaga",
+          "hiringOrganization": {
+            "@type": "Organization",
+            "name": "Your Company",
+            "sameAs": "https://www.yourcompany.com"
+          },
+          "jobLocation": {
+            "@type": "Place",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Oradea"
+            }
           }
-        }
+        };
+  
+        // Access the HTML elements and update their content with the job posting data
+        document.getElementById("title").textContent = jobPosting.title;
+        document.getElementById("employmentType").textContent = jobPosting.employmentType;
+        // Update other elements with relevant job posting data
+  
       }
+  
+      // Call the function to load the job posting data when the page is loaded
+      window.onload = loadJobPosting;
     </script>
   </head>
   <body>
@@ -119,10 +131,10 @@
       <section class="job-cards">
         <div class="card">
           <div class="job-details">
-            <h3>Software Engineer</h3>
+            <h3 id="title"></h3>
             <div class="job-type">
               <img src="assets/briefcase.svg" alt="briefcase icon" />
-              <p>Norma intreaga</p>
+              <p id="employmentType"></p>
             </div>
             <div class="job-location">
               <img src="assets/map-pin.svg" alt="map pin icon" />
@@ -130,7 +142,7 @@
             </div>
           </div>
           <div class="buttons">
-            <button class="btn-apply">
+            <button link="https://jobdescription-vanillajs-own.netlify.app/" class="btn-apply">
               Aplica
             </button>
             <button class="btn-view">Vezi detalii</button>
