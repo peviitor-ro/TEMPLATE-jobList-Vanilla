@@ -11,41 +11,7 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <script src="app.js" defer></script>
-    <script type="text/javascript">
-      // Function to dynamically load the job posting data
-      function loadJobPosting() {
-        var jobPosting = {
-          "@context": "https://schema.org",
-          "@type": "JobPosting",
-          "title": "Software Engineer",
-          "description": "Job description goes here...",
-          "datePosted": "2022-01-01",
-          "validThrough": "2022-12-31",
-          "employmentType": "Norma intreaga",
-          "hiringOrganization": {
-            "@type": "Organization",
-            "name": "Your Company",
-            "sameAs": "https://www.yourcompany.com"
-          },
-          "jobLocation": {
-            "@type": "Place",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Oradea"
-            }
-          }
-        };
-  
-        // Access the HTML elements and update their content with the job posting data
-        document.getElementById("title").textContent = jobPosting.title;
-        document.getElementById("employmentType").textContent = jobPosting.employmentType;
-        // Update other elements with relevant job posting data
-  
-      }
-  
-      // Call the function to load the job posting data when the page is loaded
-      window.onload = loadJobPosting;
-    </script>
+    <script type="module" src="microdata.js" defer></script>
   </head>
   <body>
     <header class="flex">
@@ -76,7 +42,7 @@
       <section class="job-form flex container">
         <h2>Locuri de munca disponibile</h2>
         <hr />
-        <form class="form flex container">
+        <form class="form flex">
           <div class="search-bar flex">
             <img
               src="assets/material-symbols_search-rounded.svg"
@@ -103,7 +69,7 @@
           </div>
           <button class="btn" type="button">Cauta job</button>
         </form>
-        <section class="job-tags container">
+        <section class="job-tags">
           <div class="tags-group flex">
             <div class="tag">
               <img src="assets/carbon_close-outline.svg" alt="close icon" />
@@ -129,116 +95,7 @@
         </section>
       </section>
       <section class="job-cards">
-        <div class="card">
-          <div class="job-details">
-            <h3 id="title"></h3>
-            <div class="job-type">
-              <img src="assets/briefcase.svg" alt="briefcase icon" />
-              <p id="employmentType"></p>
-            </div>
-            <div class="job-location">
-              <img src="assets/map-pin.svg" alt="map pin icon" />
-              <p>Oradea</p>
-            </div>
-          </div>
-          <div class="buttons">
-            <button  class="btn-apply">
-              <a href="https://jobdescription-vanillajs-own.netlify.app/">Aplica</a>
-            </button>
-            <button class="btn-view">Vezi detalii</button>
-          </div>
-        </div>
-        <hr />
-        <div class="card">
-          <div class="job-details">
-            <h3>Software Engineer</h3>
-            <div class="job-type">
-              <img src="assets/briefcase.svg" alt="briefcase icon" />
-              <p>Norma intreaga</p>
-            </div>
-            <div class="job-location">
-              <img src="assets/map-pin.svg" alt="map pin icon" />
-              <p>Oradea</p>
-            </div>
-          </div>
-          <div class="buttons">
-            <button class="btn-apply">Aplica</button>
-            <button class="btn-view">Vezi detalii</button>
-          </div>
-        </div>
-        <hr />
-        <div class="card">
-          <div class="job-details">
-            <h3>Software Engineer</h3>
-            <div class="job-type">
-              <img src="assets/briefcase.svg" alt="briefcase icon" />
-              <p>Norma intreaga</p>
-            </div>
-            <div class="job-location">
-              <img src="assets/map-pin.svg" alt="map pin icon" />
-              <p>Oradea</p>
-            </div>
-          </div>
-          <div class="buttons">
-            <button class="btn-apply">Aplica</button>
-            <button class="btn-view">Vezi detalii</button>
-          </div>
-        </div>
-        <hr />
-        <div class="card">
-          <div class="job-details">
-            <h3>Software Engineer</h3>
-            <div class="job-type">
-              <img src="assets/briefcase.svg" alt="briefcase icon" />
-              <p>Norma intreaga</p>
-            </div>
-            <div class="job-location">
-              <img src="assets/map-pin.svg" alt="map pin icon" />
-              <p>Oradea</p>
-            </div>
-          </div>
-          <div class="buttons">
-            <button class="btn-apply">Aplica</button>
-            <button class="btn-view">Vezi detalii</button>
-          </div>
-        </div>
-        <hr />
-        <div class="card">
-          <div class="job-details">
-            <h3>Software Engineer</h3>
-            <div class="job-type">
-              <img src="assets/briefcase.svg" alt="briefcase icon" />
-              <p>Norma intreaga</p>
-            </div>
-            <div class="job-location">
-              <img src="assets/map-pin.svg" alt="map pin icon" />
-              <p>Oradea</p>
-            </div>
-          </div>
-          <div class="buttons">
-            <button class="btn-apply">Aplica</button>
-            <button class="btn-view">Vezi detalii</button>
-          </div>
-        </div>
-        <hr />
-        <div class="card">
-          <div class="job-details">
-            <h3>Software Engineer</h3>
-            <div class="job-type">
-              <img src="assets/briefcase.svg" alt="briefcase icon" />
-              <p>Norma intreaga</p>
-            </div>
-            <div class="job-location">
-              <img src="assets/map-pin.svg" alt="map pin icon" />
-              <p>Oradea</p>
-            </div>
-          </div>
-          <div class="buttons">
-            <button class="btn-apply">Aplica</button>
-            <button class="btn-view">Vezi detalii</button>
-          </div>
-        </div>
-        <hr />
+        <!-- Job card -->
       </section>
     </main>
 
