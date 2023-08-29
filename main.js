@@ -1,11 +1,18 @@
 import jobPostings from "./jobs.js";
+import searchJobPostings from "./search.js";
 
 // Function to dynamically load the job posting data
-const loadJobPostings = () => {
-
+const loadJobPostings = (jobList = jobPostings) => {
   // Access the HTML elements and update their content with the job posting data
   const jobCardsContainer = document.querySelector(".job-cards");
-  jobPostings.forEach((jobPosting, index) => {
+  jobCardsContainer.innerHTML = "";
+
+  if (jobList.length === 0) {
+    jobCardsContainer.textContent = "Ups... Nu avem acest job!";
+    return;
+  }
+
+  jobList.forEach((jobPosting, index) => {
     const { title, employmentType, jobLocation } = jobPosting;
 
     // Create a new job card element
@@ -81,5 +88,19 @@ const loadJobPostings = () => {
   });
 };
 
-// Call the function to load the job posting data
-loadJobPostings();
+// Event listener for search button
+document.addEventListener("DOMContentLoaded", () => {
+  const searchButton = document.getElementById("searchButton");
+  searchButton.addEventListener("click", () => {
+    const query = document.getElementById("searchInput").value.trim();
+    if (query !== "") {
+      const searchResults = searchJobPostings(query, jobPostings);
+      loadJobPostings(searchResults);
+    } else {
+      loadJobPostings(jobPostings);
+    }
+  });
+
+  // Call the function to load the job posting data
+  loadJobPostings();
+});

@@ -15,16 +15,17 @@ const templateJobPosting = {
       "@type": "PostalAddress",
     },
   },
+  country: "Romania",
 };
 
 async function fetchJobPostingsFromAPI() {
   try {
     // Make a fetch request to your API to get the job posting data
-    const response = await fetch('https://api.example.com/job-postings');
+    const response = await fetch("https://api.example.com/job-postings");
     const data = await response.json();
 
     // Process each job posting and add it to the jobPostings array
-    data.forEach(jobData => {
+    data.forEach((jobData) => {
       const newJobPosting = {
         ...templateJobPosting,
         ...jobData,
@@ -39,7 +40,7 @@ async function fetchJobPostingsFromAPI() {
       jobPostings.push(newJobPosting);
     });
   } catch (error) {
-    console.error('Error fetching job postings:', error);
+    console.error("Error fetching job postings:", error);
   }
 }
 

@@ -11,7 +11,8 @@
       rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <script src="app.js" defer></script>
-    <script type="module" src="microdata.js" defer></script>
+    <script type="module" src="main.js" defer></script>
+    <!-- <script type="module" src="search.js"></script> -->
   </head>
   <body>
     <header class="flex">
@@ -47,7 +48,7 @@
             <img
               src="assets/material-symbols_search-rounded.svg"
               alt="search icon" />
-            <input type="text" placeholder="Cauta job" />
+            <input type="text" id="searchInput" placeholder="Cauta job" />
           </div>
           <div class="drop-bar">
             <input type="text" placeholder="Oras" />
@@ -67,7 +68,7 @@
               src="assets/material-symbols_arrow-back-ios-rounded.svg"
               alt="arrow down icon" />
           </div>
-          <button class="btn" type="button">Cauta job</button>
+          <button class="btn" id="searchButton" type="button">Cauta job</button>
         </form>
         <section class="job-tags">
           <div class="tags-group flex">
