@@ -1,9 +1,16 @@
-// Function to perform the search
+/// Function to perform the search
 
-const searchJobPostings = (query, jobList) => {
-  const searchResults = jobList.filter((job) =>
-    job.title.toLowerCase().includes(query.toLowerCase())
-  );
+const searchJobPostings = (titleQuery, cityQuery, jobList) => {
+  const lowerCaseTitleQuery = titleQuery.toLowerCase().trim();
+  const lowerCaseCityQuery = cityQuery.toLowerCase().trim();
+  
+  const searchResults = jobList.filter((job) => {
+    const lowerCaseTitle = job.title.toLowerCase();
+    const lowerCaseCity = job.jobLocation.address.addressLocality.toLowerCase();
+
+    return lowerCaseTitle.includes(lowerCaseTitleQuery) && lowerCaseCity.includes(lowerCaseCityQuery);
+  });
+
   return searchResults;
 };
 

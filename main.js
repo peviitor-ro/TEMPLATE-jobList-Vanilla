@@ -1,9 +1,81 @@
 import jobPostings from "./jobs.js";
 import searchJobPostings from "./search.js";
 
-// Function to dynamically load the job posting data
+// Job card creation module
+const createJobCard = (jobPosting) => {
+  const createTextElement = (text, className) => {
+    const element = document.createElement("p");
+    element.textContent = text;
+    if (className) element.classList.add(className);
+    return element;
+  };
+
+  const createIconElement = (src, alt) => {
+    const element = document.createElement("img");
+    element.src = src;
+    element.alt = alt;
+    return element;
+  };
+
+  const createButton = (text, className, href) => {
+    const button = document.createElement("button");
+    button.classList.add(className);
+    const link = document.createElement("a");
+    if (href) link.setAttribute("href", href);
+    link.textContent = text;
+    button.appendChild(link);
+    return button;
+  };
+
+  const { title, employmentType, jobLocation } = jobPosting;
+
+  const jobCard = document.createElement("div");
+  jobCard.classList.add("card");
+
+  const jobDetails = document.createElement("div");
+  jobDetails.classList.add("job-details");
+
+  jobDetails.appendChild(createTextElement(title, "h3"));
+
+  const jobType = document.createElement("div");
+  jobType.classList.add("job-type");
+  jobType.appendChild(
+    createIconElement("assets/briefcase.svg", "briefcase icon")
+  );
+  jobType.appendChild(createTextElement(employmentType));
+
+  const jobLocationElement = document.createElement("div");
+  jobLocationElement.classList.add("job-location");
+  jobLocationElement.appendChild(
+    createIconElement("assets/map-pin.svg", "map pin icon")
+  );
+  jobLocationElement.appendChild(
+    createTextElement(jobLocation.address.addressLocality)
+  );
+
+  jobDetails.appendChild(jobType);
+  jobDetails.appendChild(jobLocationElement);
+  jobCard.appendChild(jobDetails);
+
+  const buttons = document.createElement("div");
+  buttons.classList.add("buttons");
+
+  buttons.appendChild(
+    createButton(
+      "Aplica",
+      "btn-apply",
+      "https://jobdescription-vanillajs-own.netlify.app/"
+    )
+  );
+  buttons.appendChild(createButton("Vezi detalii", "btn-view"));
+
+  jobCard.appendChild(buttons);
+
+  return jobCard;
+};
+
+// Job postings module
 const loadJobPostings = (jobList = jobPostings) => {
-  // Access the HTML elements and update their content with the job posting data
   const jobCardsContainer = document.querySelector(".job-cards");
   jobCardsContainer.innerHTML = "";
 
@@ -13,94 +85,33 @@ const loadJobPostings = (jobList = jobPostings) => {
   }
 
   jobList.forEach((jobPosting, index) => {
-    const { title, employmentType, jobLocation } = jobPosting;
-
-    // Create a new job card element
-    const jobCard = document.createElement("div");
-    jobCard.classList.add("card");
-
-    // Create the job details element
-    const jobDetails = document.createElement("div");
-    jobDetails.classList.add("job-details");
-
-    // Create the job title element
-    const jobTitle = document.createElement("h3");
-    jobTitle.textContent = title;
-
-    // Create the job type element
-    const jobType = document.createElement("div");
-    jobType.classList.add("job-type");
-    const jobTypeIcon = document.createElement("img");
-    jobTypeIcon.src = "assets/briefcase.svg";
-    jobTypeIcon.alt = "briefcase icon";
-    const jobTypeText = document.createElement("p");
-    jobTypeText.textContent = employmentType;
-
-    // Create the job location element
-    const jobLocationElement = document.createElement("div");
-    jobLocationElement.classList.add("job-location");
-    const jobLocationIcon = document.createElement("img");
-    jobLocationIcon.src = "assets/map-pin.svg";
-    jobLocationIcon.alt = "map pin icon";
-    const jobLocationText = document.createElement("p");
-    jobLocationText.textContent = jobLocation.address.addressLocality;
-
-    // Append elements to the job card
-    jobType.appendChild(jobTypeIcon);
-    jobType.appendChild(jobTypeText);
-    jobLocationElement.appendChild(jobLocationIcon);
-    jobLocationElement.appendChild(jobLocationText);
-    jobDetails.appendChild(jobTitle);
-    jobDetails.appendChild(jobType);
-    jobDetails.appendChild(jobLocationElement);
-    jobCard.appendChild(jobDetails);
-
-    // Create the buttons element
-    const buttons = document.createElement("div");
-    buttons.classList.add("buttons");
-    const applyButton = document.createElement("button");
-    applyButton.classList.add("btn-apply");
-    const applyLink = document.createElement("a");
-    applyLink.setAttribute(
-      "href",
-      "https://jobdescription-vanillajs-own.netlify.app/"
-    );
-    applyLink.textContent = "Aplica";
-    applyButton.appendChild(applyLink);
-    const viewButton = document.createElement("button");
-    viewButton.classList.add("btn-view");
-    viewButton.textContent = "Vezi detalii";
-    buttons.appendChild(applyButton);
-    buttons.appendChild(viewButton);
-    jobCard.appendChild(buttons);
-
-    // Create a horizontal line element
-    const hr = document.createElement("hr");
-
-    // Append the job card and horizontal line to the job cards container
+    const jobCard = createJobCard(jobPosting);
     jobCardsContainer.appendChild(jobCard);
 
-    // Add a horizontal line after each job card except for the last one
     if (index < jobPostings.length - 1) {
-      const hr = document.createElement("hr");
-      jobCardsContainer.appendChild(hr);
+      jobCardsContainer.appendChild(document.createElement("hr"));
     }
   });
+};
+
+// Search module
+const handleSearch = () => {
+  const searchInput = document.getElementById("searchInput");
+  const query = searchInput.value.trim();
+  const searchResults =
+    query !== "" ? searchJobPostings(query, jobPostings) : jobPostings;
+  loadJobPostings(searchResults);
 };
 
 // Event listener for search button
 document.addEventListener("DOMContentLoaded", () => {
   const searchButton = document.getElementById("searchButton");
   searchButton.addEventListener("click", () => {
-    const query = document.getElementById("searchInput").value.trim();
-    if (query !== "") {
-      const searchResults = searchJobPostings(query, jobPostings);
-      loadJobPostings(searchResults);
-    } else {
-      loadJobPostings(jobPostings);
-    }
+    const titleQuery = document.getElementById("searchInput").value.trim();
+    const cityQuery = document.getElementById("cityInput").value.trim();
+    const searchResults = searchJobPostings(titleQuery, cityQuery, jobPostings);
+    loadJobPostings(searchResults);
   });
-
-  // Call the function to load the job posting data
+  // Call the function to load the initial job posting data
   loadJobPostings();
 });

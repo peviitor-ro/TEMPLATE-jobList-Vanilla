@@ -62,6 +62,8 @@ createJobPosting(
   "",
   "Cluj-Napoca"
 );
+
+
 // You can add more job postings using the createJobPosting function
 
 export default jobPostings;
